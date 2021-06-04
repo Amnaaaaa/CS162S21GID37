@@ -7,8 +7,12 @@ package mess.management.system;
 
 /**
  *
- * @author DELL
+ * @author hp
  */
+
+ // This is the driver class of the mess management system.
+
+
 public class MessManagementSystem {
 
     /**
@@ -16,6 +20,28 @@ public class MessManagementSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        
+         LoginPortal f = LoginPortal.getInstance();
+        f.setVisible(true);
+        System.out.println(" ");
+        
+        //Setting visible the JFrame forms
+         StudentPortal a=new StudentPortal();
+         a.setVisible(true);
+         
+         
+          WorkerPortal b=new WorkerPortal();
+         b.setVisible(true);
+         
+         ManagerPortal c=new ManagerPortal();
+         c.setVisible(true);
+         
+         Grocery d=new Grocery();
+         d.setVisible(true);
+         
+         ComplaintPortal e=new ComplaintPortal();
+         e.setVisible();
     }
     
 }

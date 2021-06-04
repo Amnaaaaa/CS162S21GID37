@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.prototype;
+package mess.management.system;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author BestBoi
  */
 public class ManagerPortal extends javax.swing.JFrame {
-
+      DefaultTableModel model;
     /**
      * Creates new form ManagerPortal
      */
     public ManagerPortal() {
         initComponents();
+         model= (DefaultTableModel) jTable1.getModel();
     }
 
     /**
@@ -59,17 +61,24 @@ public class ManagerPortal extends javax.swing.JFrame {
         jLabel5.setText("Cell.No");
 
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Edit");
 
         jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Name", "Email", "ID", "Cell.No"
@@ -148,6 +157,16 @@ public class ManagerPortal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         model.insertRow(model.getRowCount() ,new Object[]{jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),jTextField5.getText()});
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         model.removeRow(jTable1.getSelectedRow());
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
