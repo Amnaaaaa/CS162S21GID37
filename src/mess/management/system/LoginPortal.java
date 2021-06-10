@@ -32,9 +32,8 @@ public class LoginPortal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,13 +42,20 @@ public class LoginPortal extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jTextField1.setText("Login Portal");
 
-        jLabel2.setText("Username");
+        jLabel2.setText("UserName");
 
-        jLabel3.setText("Password");
+        jLabel3.setText("PassWord");
+
+        jTextField2.setText("Manager");
 
         jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Exit");
+        jPasswordField1.setText("abc");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,19 +73,17 @@ public class LoginPortal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3))
+                                .addGap(28, 28, 28)
+                                .addComponent(jPasswordField1))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(20, 20, 20))
+                .addGap(89, 89, 89))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,16 +98,68 @@ public class LoginPortal extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addComponent(jButton1)
                 .addGap(0, 65, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        //get Username
+        String Username = jTextField1.getText();
+         //get Password
+        String passWord = jPasswordField1.getText();
+        
+         // Logic for MultiUser Login
+         
+         
+          // here we set three user
+           //1.Username = Manager password = abc
+           //2.Username = Worker password = 123
+           //3.Username = Student password = 456
+           
+           if(Username.equals("Manager")&&passWord.equals("abc")){
+               
+            // open home page login success....
+            HomePage hpage = new HomePage();
+            hpage.show();
+                    
+           
+               
+           }
+           // second user
+           else if(Username.equals("Worker")&&passWord.equals("123")){
+               
+            // open home page login success....
+            HomePage hpage = new HomePage();
+            hpage.show();
+                    
+                     
+           }
+        // third user
+           else if(Username.equals("Student")&&passWord.equals("456")){
+               
+            // open home page login success....
+            HomePage hpage = new HomePage();
+            hpage.show();
+                    
+                     
+           }
+           else{
+               // if username or password incorrect
+               JOptionPane.showMessageDialog(this, "Incorrect Username anad Pssword");
+           }
+               
+           
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,12 +198,12 @@ public class LoginPortal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
-}
+
+    
