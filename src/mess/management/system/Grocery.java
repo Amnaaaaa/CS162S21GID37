@@ -8,15 +8,20 @@
  *
  * @author hp
  */
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class Grocery extends javax.swing.JFrame {
 
     /**
      * Creates new form Grocery
      */
+     DefaultTableModel model;
     
     public Grocery() {
         initComponents();
+          model= (DefaultTableModel) jTable1.getModel();
         
         
                   
@@ -36,15 +41,14 @@ public class Grocery extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Print = new javax.swing.JToggleButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,33 +66,46 @@ public class Grocery extends javax.swing.JFrame {
 
         jLabel5.setText("Price");
 
-        Print.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Print.setText("Print");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jToggleButton1.setText("Exit");
+        jToggleButton1.setText("Add");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("Clear");
+        jToggleButton2.setText("Delete");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton2ActionPerformed(evt);
             }
         });
 
-        jToggleButton3.setText("Bill");
+        jToggleButton3.setText("Edit");
+        jToggleButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton3MouseClicked(evt);
+            }
+        });
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton3ActionPerformed(evt);
             }
         });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Price", "Quantity"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,15 +138,11 @@ public class Grocery extends javax.swing.JFrame {
                         .addComponent(jToggleButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jToggleButton2)
-                        .addGap(37, 37, 37)
+                        .addGap(18, 18, 18)
                         .addComponent(jToggleButton3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Print)
-                .addGap(269, 269, 269))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,11 +170,10 @@ public class Grocery extends javax.swing.JFrame {
                     .addComponent(jToggleButton2)
                     .addComponent(jToggleButton3))
                 .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Print)
-                .addGap(34, 34, 34))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -169,7 +181,7 @@ public class Grocery extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+          model.insertRow(model.getRowCount() ,new Object[]{jTextField4.getText(),jTextField2.getText(),jTextField3.getText(),});
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -178,21 +190,59 @@ public class Grocery extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
+
+  model.removeRow(jTable1.getSelectedRow());        // TODO add your handling code here:
+        
         
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        // TODO add your handling code here:
-        jTextArea1.setText(jTextField1.getText()+jTextField2.getText()+jTextField3.getText());
+
+         
+          model= (DefaultTableModel) jTable1.getModel();
+          if(jTable1.getSelectedRowCount()==1){
+              String name=jTextField4.getText();
+              String name2=jTextField2.getText();
+              String name3=jTextField3.getText();
+              
+              
+              
+              //now code to write edited data in table
+             
+               model.setValueAt(name, jTable1.getSelectedRow(),0);
+               model.setValueAt(name2, jTable1.getSelectedRow(),1);
+               model.setValueAt(name3, jTable1.getSelectedRow(),2);
+              
+              
+          }
+        
+       
     }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jToggleButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton3MouseClicked
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_jToggleButton3MouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+         String name=model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String name2=model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String name3=model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        
+        
+        
+        //set TextField
+        jTextField4.setText(name);
+        jTextField2.setText(name2);
+        jTextField3.setText(name3);
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /*
      * @param args the command line arguments
      */
+     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -226,13 +276,12 @@ public class Grocery extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton Print;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
