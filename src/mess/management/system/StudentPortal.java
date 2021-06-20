@@ -98,6 +98,11 @@ public class StudentPortal extends javax.swing.JFrame {
         });
 
         jButton2.setText("Edit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +119,11 @@ public class StudentPortal extends javax.swing.JFrame {
                 "Name", "Email", "ID", "Cell.No"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,6 +231,40 @@ public class StudentPortal extends javax.swing.JFrame {
         // TODO add your handling code here:
          model.removeRow(jTable1.getSelectedRow());
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         model= (DefaultTableModel) jTable1.getModel();
+          if(jTable1.getSelectedRowCount()==1){
+              String name=jTextField2.getText();
+              String name2=jTextField3.getText();
+              String name3=jTextField4.getText();
+              String name4=jTextField5.getText();
+              
+              
+              //now code to write edited data in table
+             
+               model.setValueAt(name, jTable1.getSelectedRow(),0);
+               model.setValueAt(name2, jTable1.getSelectedRow(),1);
+               model.setValueAt(name3, jTable1.getSelectedRow(),2);
+               model.setValueAt(name4, jTable1.getSelectedRow(),3);
+              
+    }//GEN-LAST:event_jButton2ActionPerformed
+    }
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        String name=model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String name2=model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String name3=model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String name4=model.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        
+        
+        //set TextField
+        jTextField2.setText(name);
+        jTextField3.setText(name2);
+        jTextField4.setText(name3);
+        jTextField5.setText(name4);
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
