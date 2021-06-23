@@ -8,6 +8,7 @@
  *
  * @author DELL
  */
+package mess.management.system;
 public class ComplaintPortal extends javax.swing.JFrame {
 
     /**

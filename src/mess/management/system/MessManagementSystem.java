@@ -22,9 +22,7 @@ public class MessManagementSystem {
         // TODO code application logic here
         
         
-         LoginPortal f = LoginPortal.getInstance();
-        f.setVisible(true);
-        System.out.println(" ");
+       
         
         //Setting visible the JFrame forms
          StudentPortal a=new StudentPortal();
@@ -41,7 +39,7 @@ public class MessManagementSystem {
          d.setVisible(true);
          
          ComplaintPortal e=new ComplaintPortal();
-         e.setVisible();
+         e.setVisible(true);
     }
     
 }
